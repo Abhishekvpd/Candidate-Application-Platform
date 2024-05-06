@@ -1,0 +1,22 @@
+.filter__container {
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.MuiTextField-root {
+  padding: 1rem;
+}
+
+.MuiOutlinedInput-root .MuiInputBase-input {
+    padding: 6px 8px;
+    border-radius: 5px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 500;
+    box-sizing: border-box;
+    height: 38px;
+}

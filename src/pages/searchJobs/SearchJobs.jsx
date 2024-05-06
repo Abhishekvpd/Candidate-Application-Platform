@@ -1,15 +1,18 @@
 import "./searchJobs.css";
 import Box from "@mui/material/Box";
-import { CircularProgress, Grid } from "@mui/material";
+import { CircularProgress, Grid, Select } from "@mui/material";
 import JobCard from "../../components/jobCard/JobCard";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { processJobs, updatePageOffset } from "../../store/features/jobSlice";
+import Menu from "../../components/Menu/Menu";
+import FilterContainer from "../../components/filterContainer/FilterContainer";
 
 const SearchJobs = () => {
     const dispatch = useDispatch();
     const jobState = useSelector(state => state.jobs);
     const { jds: { list }, status, pageOffset, pageSize } = jobState;
+    const [filteredList, setFilteredList] = useState(list);
     const loadingRef = useRef(null);
 
     useEffect(() => {
@@ -35,9 +38,7 @@ const SearchJobs = () => {
 
     return (
         <div className="page__container">
-            <section className="filter__container">
-                <h2>Filter</h2>
-            </section>
+            <FilterContainer />
 
             <main>
                 {

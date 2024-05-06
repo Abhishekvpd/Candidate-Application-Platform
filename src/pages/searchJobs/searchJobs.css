@@ -6,15 +6,6 @@
     gap: 1rem;
 }
 
-.filter__container {
-    width: 100%;
-    padding: 1.25rem;
-    display: flex;
-    gap: 0.25rem;
-    flex-wrap: wrap;
-    align-items: flex-end;
-}
-
 .loader {
     display: flex;
     justify-content: center;
