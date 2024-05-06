@@ -8,13 +8,14 @@ const initialState = {
         totalCount: 0
     },
     jdFilters: {},
-    pageOffset: 0
+    pageOffset: 0,
+    pageSize: 6
 };
 
 export const processJobs = createAsyncThunk(
     'jobs/processJobs',
-    async () => {
-        const response = await fetchJobs();
+    async (offset = 0) => {
+        const response = await fetchJobs(offset);
         return response;
     }
 )
@@ -22,7 +23,11 @@ export const processJobs = createAsyncThunk(
 const jobSlice = createSlice({
     name: "jobs",
     initialState,
-    reducers: {},
+    reducers: {
+        updatePageOffset(state, action) {
+            state.pageOffset = action.payload.value;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(processJobs.pending, (state) => { state.status = "pending" });
         builder.addCase(processJobs.fulfilled, (state, action) => {
@@ -36,4 +41,5 @@ const jobSlice = createSlice({
     }
 });
 
+export const { updatePageOffset } = jobSlice.actions;
 export default jobSlice.reducer;

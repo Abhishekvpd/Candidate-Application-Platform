@@ -8,9 +8,15 @@ const requestOptions = {
     headers: headers
 };
 
-const fetchJobs = async () => {
-   const response =  await fetch(hostUrl, requestOptions);
-   return await response.json();
+const fetchJobs = async (offset) => {
+    const response = await fetch(hostUrl, {
+        ...requestOptions,
+        body: JSON.stringify({
+            limit: 6,
+            offset
+        })
+    });
+    return await response.json();
 }
 
 export default fetchJobs;
