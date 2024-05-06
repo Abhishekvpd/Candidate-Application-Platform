@@ -1,8 +1,12 @@
+import { Provider } from "react-redux";
 import SearchJobs from "./pages/searchJobs/SearchJobs";
+import store from "./store/store";
 
 const App = () => {
   return (
-    <SearchJobs />
+    // <Provider store={store}>
+      <SearchJobs />
+    // </Provider>
   )
 }
 

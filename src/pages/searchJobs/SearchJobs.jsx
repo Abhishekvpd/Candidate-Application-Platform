@@ -2,6 +2,9 @@ import "./searchJobs.css";
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import JobCard from "../../components/jobCard/JobCard";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { processJobs } from "../../store/features/jobSlice";
 
 const dummy = [
     {
@@ -147,6 +150,12 @@ const dummy = [
 ]
 
 const SearchJobs = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(processJobs())
+    }, [])
+
     return (
         <div className="page__container">
             <section className="filter__container">

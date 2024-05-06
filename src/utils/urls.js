@@ -1,0 +1,1 @@
+export const hostUrl = "https://api.weekday.technology/adhoc/getSampleJdJSON";
