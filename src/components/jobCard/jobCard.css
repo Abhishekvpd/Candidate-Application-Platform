@@ -1,0 +1,55 @@
+.job-card {
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-card:hover {
+  transform: scale(1.01);
+  transition: 300ms;
+}
+
+.card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.job-card h3 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #8b8b8b;
+}
+
+.job-card h2 {
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+
+.card__header > p {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.card__header .location {
+  text-transform: capitalize;
+}
+
+.job-salary {
+  font-size: 14px;
+  color: rgb(77, 89, 106);
+}
+
+.card__actions {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.card__actions > .apply-cta:hover {
+  background-color: rgb(85, 239, 196);
+}
