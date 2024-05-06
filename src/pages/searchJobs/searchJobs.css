@@ -14,3 +14,9 @@
     flex-wrap: wrap;
     align-items: flex-end;
 }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
