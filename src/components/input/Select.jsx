@@ -19,15 +19,18 @@ const SelectComponent = ({ config, onChange }) => {
                 isMulti={isMulti}
                 options={options}
                 onChange={(value) => {
-                    if (!value)
+                    if (!value) {
                         onChange({ name, value });
+                        setDisplayLabel(false);
+                    }
                     else if (Array.isArray(value)) {
                         const filterValue = value.map(item => item.value);
                         onChange({ name, value: filterValue });
-                    } else
+                        value.length ? setDisplayLabel(true) : setDisplayLabel(false);
+                    } else {
                         onChange({ name, value: value.value });
-
-                    value ? setDisplayLabel(true) : setDisplayLabel(false);
+                        setDisplayLabel(true);
+                    }
                 }}
                 styles={{
                     control: (baseStyles, state) => ({
