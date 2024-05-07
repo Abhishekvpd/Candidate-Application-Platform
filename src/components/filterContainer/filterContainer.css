@@ -1,5 +1,5 @@
 .filter__container {
-  width: 100%;
+  margin: 0 auto;
   padding: 1.25rem;
   display: flex;
   gap: 0.25rem;
@@ -12,11 +12,11 @@
 }
 
 .MuiOutlinedInput-root .MuiInputBase-input {
-    padding: 6px 8px;
-    border-radius: 5px;
-    color: #000;
-    font-size: 13px;
-    font-weight: 500;
-    box-sizing: border-box;
-    height: 38px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  color: #000;
+  font-size: 13px;
+  font-weight: 500;
+  box-sizing: border-box;
+  height: 38px;
 }
