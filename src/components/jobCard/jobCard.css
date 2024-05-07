@@ -43,6 +43,7 @@
 .job-salary {
   font-size: 14px;
   color: rgb(77, 89, 106);
+  margin: 0.5rem 0;
 }
 
 .card__actions {
@@ -52,4 +53,8 @@
 
 .card__actions > .apply-cta:hover {
   background-color: rgb(85, 239, 196);
+}
+
+.job-card ::-webkit-scrollbar {
+  display: none;
 }
