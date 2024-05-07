@@ -8,8 +8,9 @@ const requestOptions = {
     headers: headers
 };
 
-const fetchJobs = async (offset) => {
+const fetchJobs = async (offset, signal) => {
     const response = await fetch(hostUrl, {
+        signal,
         ...requestOptions,
         body: JSON.stringify({
             limit: 6,

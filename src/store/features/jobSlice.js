@@ -17,9 +17,13 @@ const initialState = {
 
 export const processJobs = createAsyncThunk(
     'jobs/processJobs',
-    async (offset = 0) => {
-        const response = await fetchJobs(offset);
-        return response;
+    async (offset = 0, { rejectWithValue, signal }) => {
+        try {
+            const response = await fetchJobs(offset, signal);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
     }
 )
 

@@ -56,42 +56,47 @@ const SearchJobs = () => {
         setFilteredList(filteredList);
     }
 
+    // fetch jobs on page offset changes
     useEffect(() => {
-        dispatch(processJobs(pageOffset))
+        const fetchJobs = dispatch(processJobs(pageOffset));
+        fetchJobs.catch((error) => console.log(error));
+
+        return (() => fetchJobs.abort());
     }, [pageOffset]);
 
+    // to trigger filter handlers
     useEffect(() => {
         if (Object.keys(jdFilters).length) parseFilters();
         else setFilteredList(list);
     }, [jdFilters, list])
 
-    // useEffect(() => {
-    //     //intersection observer to check the loading div is intersecting the viewport
-    //     const loadingObserver = new IntersectionObserver(([target]) => {
-    //         if (target.isIntersecting) dispatch(updatePageOffset({ value: (pageOffset + pageSize) }))
-    //     }, { threshold: 1 });
+    //to handle infinite scroll
+    useEffect(() => {
+        //intersection observer to check the loading div is intersecting the viewport
+        const loadingObserver = new IntersectionObserver(([target]) => {
+            if (target.isIntersecting) dispatch(updatePageOffset({ value: (pageOffset + pageSize) }))
+        }, { threshold: 1 });
 
-    //     //observe if ref is present and list length exists
-    //     if (loadingRef.current && list.length) {
-    //         loadingObserver.observe(loadingRef.current);
-    //     }
+        //observe if ref is present and list length exists
+        if (loadingRef.current && list.length) {
+            loadingObserver.observe(loadingRef.current);
+        }
 
-    //     //clean up the current observer on component unmount
-    //     return () => {
-    //         if (loadingRef.current) loadingObserver.unobserve(loadingRef.current);
-    //     }
-    // }, [filteredList])
+        //clean up the current observer on component unmount
+        return () => {
+            if (loadingRef.current) loadingObserver.unobserve(loadingRef.current);
+        }
+    }, [filteredList])
 
     return (
         <div className="page__container">
             <FilterContainer />
-
             <main>
                 {
                     filteredList.length > 0 &&
                     (<section className="job-card__container">
-                        {filteredList.map(job => (
-                            <JobCard jobDetails={job} key={job.jdUid} />
+                        {filteredList.map((job, index) => (
+                            <JobCard jobDetails={job} key={job.jdUid + index} />
                         ))}
                     </section>)
                 }
