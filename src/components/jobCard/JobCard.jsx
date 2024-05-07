@@ -9,10 +9,26 @@ const JobCard = ({ jobDetails }) => {
     const estimatedSalary = minJdSalary && maxJdSalary ? `${minJdSalary} - ${maxJdSalary}` : minJdSalary || maxJdSalary;
 
     return (
-        <Card className="job-card" sx={{ maxWidth: 360, borderRadius: 5, boxShadow: 'rgba(0, 0, 0, 0.25) 0px 1px 4px 0px', padding: 1.5 }}>
-            <CardContent sx={{ width: '100%', padding: '0.5rem', display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', gap: '0.5rem' }}>
-                    <Box component="img" src={logoUrl} alt="logo" sx={{ height: '2.5rem', width: '2.5rem' }}></Box>
+        <Card className="job-card" sx={{
+            maxWidth: 360,
+            borderRadius: 5,
+            boxShadow: 'rgba(0, 0, 0, 0.25) 0px 1px 4px 0px',
+            padding: 1.5
+        }}>
+            <CardContent sx={{
+                width: '100%',
+                padding: '0.5rem',
+                display: 'flex',
+                flexDirection: 'column'
+            }}>
+                <Box sx={{
+                    display: 'flex',
+                    gap: '0.5rem'
+                }}>
+                    <Box component="img" src={logoUrl} alt="logo" sx={{
+                        height: '2.5rem',
+                        width: '2.5rem'
+                    }}></Box>
                     <div className="card__header">
                         <h3>{companyName}</h3>
                         <h2>{jobRole}</h2>
@@ -25,12 +41,23 @@ const JobCard = ({ jobDetails }) => {
                     (minJdSalary || maxJdSalary) &&
                     <p className="job-salary">Estimated Salary: {`${estimatedSalary} ${salaryCurrencyCode}`}</p>
                 }
-                <Box sx={{ height: '250px', display: 'flex', flexDirection: 'column', ...(isJobDescriptionExpanded ? { overflowY: 'scroll' } : { overflow: 'hidden', maskImage: 'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0))' }) }}>
+                <Box sx={{
+                    height: '250px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    ...(isJobDescriptionExpanded ? { overflowY: 'scroll' } :
+                        { overflow: 'hidden', maskImage: 'linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0))' })
+                }}>
                     <Typography variant="p" sx={{ fontSize: '1rem', fontWeight: 500, lineHeight: 1.5 }}>Job Details:</Typography>
                     <Typography variant="p" sx={{ fontSize: '14px', fontWeight: 400 }}>{jobDetailsFromCompany}</Typography>
                 </Box>
 
-                <Box sx={{ textAlign: 'center', position: 'relative', top: '-20px', ...(isJobDescriptionExpanded && { visibility: 'hidden' }) }}>
+                <Box sx={{
+                    textAlign: 'center',
+                    position: 'relative',
+                    top: '-20px',
+                    ...(isJobDescriptionExpanded && { visibility: 'hidden' })
+                }}>
                     <Button variant="text" sx={{ color: '#4943da', textTransform: 'none' }} onClick={() => setIsJobDescriptionExpanded(true)}>See more</Button>
                 </Box>
 

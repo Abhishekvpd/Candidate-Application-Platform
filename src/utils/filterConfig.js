@@ -37,7 +37,7 @@ const engineeringOptions = [
     { value: 'backend', label: "Backend" },
     { value: 'frontend', label: "Frontend" },
     { value: 'fullstack', label: "Fullstack" },
-    { value: 'iOS', label: "IOS" },
+    { value: 'ios', label: "IOS" },
     { value: 'flutter', label: "Flutter" },
     { value: 'react native', label: "React Native" },
     { value: 'android', label: "Android" },
@@ -101,6 +101,7 @@ export const filterConfig = [
         placeholder: "Roles",
         options: roleOptions,
         isMulti: true,
+        label: 'Roles'
     },
     {
         name: "minExp",
@@ -108,11 +109,13 @@ export const filterConfig = [
         placeholder: "Experience",
         options: minExpOptions,
         isMulti: false,
+        label: 'Experience'
     },
     {
         name: "location",
         type: TEXT,
         placeholder: "Search Location",
+        label: "Location"
     },
     {
         name: "isRemote",
@@ -120,6 +123,7 @@ export const filterConfig = [
         placeholder: "Remote",
         options: remoteOptions,
         isMulti: true,
+        label: 'Remote'
     },
     {
         name: "minJdSalary",
@@ -127,10 +131,12 @@ export const filterConfig = [
         placeholder: "Minimum Base Pay Salary",
         options: minSalaryOptions,
         isMulti: false,
+        label: "Min Base Pay"
     },
     {
         name: "companyName",
         type: TEXT,
         placeholder: "Search Company Name",
+        label: "Company Name"
     },
 ]

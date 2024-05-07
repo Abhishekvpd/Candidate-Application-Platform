@@ -1,9 +1,10 @@
-import { Box, TextField } from "@mui/material";
-import Select from "../select/Select";
+import { Box } from "@mui/material";
+import Select from "../input/Select";
 import "./filterContainer.css";
 import { filterConfig } from "../../utils/filterConfig";
 import { useDispatch } from "react-redux";
 import { updateJdFilters } from "../../store/features/jobSlice";
+import TextField from "../input/TextField";
 
 const FilterContainer = () => {
     const dispatch = useDispatch();
@@ -20,11 +21,7 @@ const FilterContainer = () => {
                     {
                         filter.type === "SELECT" ?
                             <Select config={filter} onChange={handleSelectChange} /> :
-                            <TextField variant="outlined" placeholder={filter.placeholder} name={filter.name} onChange={(e) =>
-                                dispatch(updateJdFilters({
-                                    name: e.target.name,
-                                    value: e.target.value
-                                }))} />
+                            <TextField config={filter} onChange={handleSelectChange} />
                     }
                 </Box>)
                 )
